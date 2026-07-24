@@ -13,19 +13,20 @@
         <form action="/edit/{{ books[0]}}" method="POST" class="mb-4">
             <div class="mb-3">
                 <div class="col-md-5">
-                    <label for="name" class="col-md-1 col-form-label">Título</label>
-                    <input type="text" name="name" class="form-control"
+                    <label for="name" class="col-md-1 col-form-label">Título</label><input type="text" name="name" class="form-control"
                         placeholder="Titulo Libro" required value="{{ books[2]}}">
                 </div>
                 <div class="col-md-5">
-                    <label for="author" class="col-md-1 col-form-label">Autor</label>
-                    <input type="text" name="author" class="form-control"
+                    <label for="author" class="col-md-1 col-form-label">Autor</label><input type="text" name="author" class="form-control"
                         placeholder="Autor" required value="{{ books[3]}}">
                 </div>
                  <div class="col-md-5">
-                    <label for="genre" class="col-md-1 col-form-label">Género</label>
-                    <input type="text" name="genre" class="form-control"
+                    <label for="genre" class="col-md-1 col-form-label">Género</label><input type="text" name="genre" class="form-control"
                         placeholder="Genero" required value="{{ books[4]}}">
+                </div>
+                    <div class="col-md-5">
+                    <label for="publication_date" class="col-md-1 col-form-label">FECHA_PUBLICACION</label><input type="date" name="publication_date" class="form-control"
+                        required value="{{ books[5]}}">
                 </div>
                 <div class="col-md-2">
                     <button type="submit" class="btn btn-primary w-100">Actualizar Libro</button>

@@ -56,11 +56,11 @@ def add_book():
         author = request.form['author']
         genre = request.form['genre']
         code_book = generate_code_book()
+        publication_date = request.form['publication_date']
         cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO BOOKS (code, name,author,genre) VALUES (%s,%s,%s,%s)", (code_book,name,author,genre))
+        cur.execute("INSERT INTO BOOKS (code, name,author,genre,publication_date) VALUES (%s,%s,%s,%s,%s)", (code_book,name,author,genre,publication_date))
         mysql.connection.commit()
         cur.close()
-        flash('Contact Added successfully')
         return redirect(url_for('index'))
 
 @app.route("/edit/<int:id>", methods=["POST","GET"])
@@ -69,8 +69,10 @@ def edit_book(id):
         name = request.form['name']
         author = request.form['author']
         genre = request.form['genre']
+        publication_date = request.form['publication_date']
         cur = mysql.connection.cursor()
-        cur.execute("UPDATE BOOKS SET NAME = %s, AUTHOR = %s ,GENRE = %s WHERE id = %s", (name,author,genre, id,))
+        publication_date = request.form['publication_date']
+        cur.execute("UPDATE BOOKS SET NAME = %s, AUTHOR = %s ,GENRE = %s, PUBLICATION_DATE= %s WHERE id = %s", (name,author,genre,publication_date, id,))
         mysql.connection.commit()
         cur.close()
         return redirect(url_for('index'))
