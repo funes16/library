@@ -10,8 +10,21 @@
             rel="stylesheet">
     </head>
     <body>
+<label for="title" class="col-md-3 col-form-label">Menu de busqueda</label>
+<form action="{{ url_for('search_book') }}" method="GET" style="margin-bottom: 30px;">
+    
+        <div class="col-md-5">
+            <input type="text" name="query" value="{{ query or '' }}" placeholder="Buscar por codigo, titulo,autor o género">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+           {% if query %}
+            <a href="{{ url_for('index') }}">Limpiar búsqueda</a>
+            {% endif %}
+        </div>
+</form>
+
 <form action="/add" method="POST" class="mb-4">
     <!-- Título -->
+    <label for="title" class="col-md-3 col-form-label">Agregar libros</label>
     <div class="row mb-3 align-items-center">
         <label for="name" class="col-md-1 col-form-label">Título</label>
         <div class="col-md-5">
@@ -43,19 +56,6 @@
     </div>
 </form>
 
-<form action="{{ url_for('search_book') }}" method="GET" style="margin-bottom: 30px;">
-    <div class="col-md-4 offset-md-1">
-        <input type="text" name="query" value="{{ query or '' }}" placeholder="Buscar por codigo, titulo,autor o género">
-    </div>
-     <div class="row">
-        <div class="col-md-4 offset-md-1">
-            <button type="submit" class="btn btn-primary">Buscar</button>
-        </div>
-    </div>
-    {% if query %}
-        <a href="{{ url_for('index') }}">Limpiar búsqueda</a>
-    {% endif %}
-</form>
 
             <table class="table table-striped table-hover">
                 <thead>
