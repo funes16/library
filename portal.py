@@ -11,7 +11,7 @@ import string
 #print(os.getcwd() + '\\templates')
 #Se agregó esta linea de codigo para que funcione el ejecutable con pyinstaller y poder correr el servicio como un exe
 app = Flask(__name__, template_folder= os.getcwd() + '\\templates')
-#app.config['SECRET_KEY'] = '1111'
+app.config['SECRET_KEY'] = '1111'
 
 # Pasarlo a un archivo .conf
 app.config["MYSQL_HOST"] = 'localhost'
@@ -60,6 +60,7 @@ def add_book():
         cur.execute("INSERT INTO BOOKS (code, name,author,genre) VALUES (%s,%s,%s,%s)", (code_book,name,author,genre))
         mysql.connection.commit()
         cur.close()
+        flash('Contact Added successfully')
         return redirect(url_for('index'))
 
 @app.route("/edit/<int:id>", methods=["POST","GET"])
