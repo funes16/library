@@ -41,7 +41,7 @@ def generate_code_book():
             code_existe = True
     return code_book
 
-@app.route("/")
+@app.route("/books")
 def index():
     cur = mysql.connection.cursor()
     cur.execute('select * from books')
