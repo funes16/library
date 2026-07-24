@@ -3,7 +3,6 @@
 @author: JUAN CARLOS HERNANEZ FUNES
 """
 #import pyodbc
-#from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 from flask import Flask, render_template , request , redirect, url_for, flash
 import os
