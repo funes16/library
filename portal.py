@@ -6,11 +6,19 @@
 from flask_mysqldb import MySQL
 from flask import Flask, render_template , request , redirect, url_for, flash
 import os
+#import sys #para que funcione el ejecutable al compilar con pyinstaller
 import random
 import string
+from pathlib import Path
 #print(os.getcwd() + '\\templates')
 #Se agregó esta linea de codigo para que funcione el ejecutable con pyinstaller y poder correr el servicio como un exe
-app = Flask(__name__, template_folder= os.getcwd() + '\\templates')
+BASE_DIR = Path(__file__).resolve().parent
+
+app = Flask(
+    __name__,
+    template_folder=str(BASE_DIR / 'templates'),
+    static_folder=str(BASE_DIR / 'static')
+)
 app.config['SECRET_KEY'] = '1111'
 
 # Pasarlo a un archivo .conf
@@ -116,7 +124,7 @@ def delete_book(id):
 #PARA ENTRAR REMOTAMENTE
 #app.run(host='CO-JUHERNANDEZF',port=8080)
 #LOCALMENTE
-app.run(host='localhost',port=3000, debug=True)
+app.run(host='localhost',port=2000, debug=False)
 #Cuando se quiera ejecutar en un servidor SRV-CFDI(172.18.3.83)
 #app.run(host='SRV-CFDI',port=3000)
 
