@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-@author: JUAN CARLOS HERNANEZ FUNES
+@author: JUAN CARLOS HERNANDEZ FUNES
 """
 #import pyodbc
 from flask_mysqldb import MySQL
